@@ -1,0 +1,10 @@
+<h1>サイト名一覧</h1>
+{% if site_list %}
+<ul>
+  {% for site in site_list %}
+  <li><a href="/list/{{ site }}/">{{ site }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No data.</p>
+{% endif %}

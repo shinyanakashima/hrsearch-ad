@@ -1,0 +1,33 @@
+<h1>{{ response }}での検索結果</h1>
+
+{% if results_list %}
+<form action="/search/results/save_csv/" method="post">
+  {% csrf_token %}
+  <button type="submit" name="q" value="{{response}}">csvで保存</button>
+</form>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Sponsored</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pr in results_list %}
+    <tr>
+      <td nowrap>{{ pr.site }}</td>
+      <td>{{ pr.sponsored }}</td>
+      <td><a href="/search/results/{{ pr.id }}/">{{ pr.title }}</a></td>
+      <td nowrap>{{ pr.date }}</td>
+      <td><a href="{{pr.url}}">{{ pr.url }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No data.</p>
+{% endif %}

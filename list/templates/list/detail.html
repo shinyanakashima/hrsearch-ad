@@ -1,0 +1,8 @@
+{% if request.user.is_superuser %}
+<p><a href="/admin/search/promotion/{{ pr.id }}/change/">編集</a></p>
+{% endif %}
+<h2>スポンサー名: {{ pr.sponsored }}</h2>
+<h2>記事URL: <a href="{{ pr.url }}">{{ pr.url }}</a></h2>
+<h2>タイトル: {{ pr.title }}</h2>
+<h2>日にち: {{ pr.date }}</h2>
+<div>{{ pr.content }}</div>
